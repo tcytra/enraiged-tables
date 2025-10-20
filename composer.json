@@ -1,0 +1,37 @@
+{
+    "name": "tcytra/enraiged-tables",
+    "description": "Enraiged Tables provides table handling features for Laravel Enraiged projects.",
+    "keywords": ["tables", "enraiged"],
+    "homepage": "https://github.com/tcytra/enraiged-core",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Todd Cytra",
+            "email": "tcytra@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^12.0",
+        "tcytra/enraiged-exports": "^0.4",
+        "tcytra/enraiged-support": "^0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Enraiged\\Tables\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Enraiged\\Tables\\TablesServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
