@@ -13,6 +13,7 @@
     ],
     "require": {
         "laravel/framework": "^12.0",
+        "phpoffice/phpspreadsheet": "^1.30",
         "tcytra/enraiged-exports": "^0.4",
         "tcytra/enraiged-support": "^0.4"
     },
@@ -23,6 +24,7 @@
     },
     "scripts": {
         "post-update-cmd": [
+            "@php artisan vendor:publish --tag=enraiged-tables --ansi --force"
         ]
     },
     "extra": {
