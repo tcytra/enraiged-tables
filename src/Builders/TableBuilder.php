@@ -2,6 +2,7 @@
 
 namespace Enraiged\Tables\Builders;
 
+use Enraiged\Builders\Secure\AssertSecure;
 use Enraiged\Tables\Contracts\ProvidesTableQuery;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
@@ -12,10 +13,10 @@ class TableBuilder
         Traits\EloquentBuilder,
         Traits\Exportable,
         Traits\HttpRequest,
-        Traits\SecurityAssertions,
         Traits\TableActions,
         Traits\TableColumns,
-        Traits\TableFilters;
+        Traits\TableFilters,
+        AssertSecure;
 
     /**
      *  Return the data for the table request.

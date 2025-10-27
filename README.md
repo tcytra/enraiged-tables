@@ -2,7 +2,20 @@
 
 **Enraiged Tables provides table handling features for Laravel Enraiged projects.**
 
-> **Please Note:** This package is currently a work in progress and not yet ready for production use.
+
+## Usage
+
+Install the Enraiged Tables package to your Laravel project using composer:
+
+```sh
+composer require tcytra/enraiged-tables
+```
+
+Publish the Enraiged Table assets to the local project:
+
+```sh
+php artisan vendor:publish --tag=enraiged-tables --ansi --force
+```
 
 
 ## License
