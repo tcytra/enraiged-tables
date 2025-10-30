@@ -47,17 +47,21 @@ trait TableActions
             ? new $this->model
             : $this->model;
 
-        return $model->actions($this->actions)
-            ->transform(fn ($action)
-                => [...$action, 'type' => key_exists('type', $action) ? $action['type'] : 'table'])
-            ->filter(fn ($action)
-                => $action['type'] === 'table')
-            ->asRoutableActions($this->request, $model, $this->prefix)
-            ->transform(fn ($action)
-                => collect($action)
-                    ->except(['secure', 'secureAll', 'secureAny'])
-                    ->toArray())
-            ->toArray();
+        if ($model instanceof ProvidesActions && count($this->actions)) {
+            return $model->actions($this->actions)
+                ->transform(fn ($action)
+                    => [...$action, 'type' => key_exists('type', $action) ? $action['type'] : 'table'])
+                ->filter(fn ($action)
+                    => $action['type'] === 'table')
+                ->asRoutableActions($this->request, $model, $this->prefix)
+                ->transform(fn ($action)
+                    => collect($action)
+                        ->except(['secure', 'secureAll', 'secureAny'])
+                        ->toArray())
+                ->toArray();
+        }
+
+        return [];
     }
 
     /**
