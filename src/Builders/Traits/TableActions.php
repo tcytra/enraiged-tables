@@ -2,6 +2,8 @@
 
 namespace Enraiged\Tables\Builders\Traits;
 
+use Enraiged\Contracts\ProvidesActions;
+
 trait TableActions
 {
     /** @var  array  The table actions. */
