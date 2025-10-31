@@ -50,17 +50,25 @@ trait TableActions
             : $this->model;
 
         if ($model instanceof ProvidesActions && count($this->actions)) {
-            return $model->actions($this->actions)
+            $actions = $model->actions($this->actions)
                 ->transform(fn ($action)
                     => [...$action, 'type' => key_exists('type', $action) ? $action['type'] : 'table'])
                 ->filter(fn ($action)
-                    => $action['type'] === 'table')
+                    => $action['type'] !== 'row')
                 ->asRoutableActions($this->request, $model, $this->prefix)
                 ->transform(fn ($action)
                     => collect($action)
                         ->except(['secure', 'secureAll', 'secureAny'])
                         ->toArray())
                 ->toArray();
+
+            return [
+                ...$actions,
+                ...collect($this->actions)
+                    ->filter(fn ($action)
+                        => key_exists('type', $action) && $action['type'] === 'row')
+                    ->toArray()
+            ];
         }
 
         return [];
