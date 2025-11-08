@@ -36,16 +36,32 @@ trait TableColumns
     }
 
     /**
-     *  Return the column parameters identified by index.
+     *  Set or return the column parameters identified by the provided index.
      *
      *  @param  string  $index
-     *  @return array|null
+     *  @param  array|null  $parameters = null
+     *  @param  bool    $replace = false
+     *  @return mixed
      */
-    public function column(string $index): ?array
+    public function column(string $index, ?array $parameters = null, $replace = false)
     {
-        return $this->columnExists($index)
-            ? $this->columns[$index]
-            : null;
+        if ($this->columnExists($index)) {
+            $column = $this->columns[$index];
+
+            if (is_array($parameters)) {
+                $parameters = $replace
+                    ? $column
+                    : [...$column, ...$parameters];
+
+                $this->columns[$index] = $parameters;
+
+                return $this;
+            }
+
+            return $column;
+        }
+
+        return null;
     }
 
     /**
