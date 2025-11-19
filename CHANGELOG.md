@@ -1,5 +1,10 @@
 # Enraiged Tables Release Notes
 
+2025-11-19 : 0.3.19.4  
+Update: Improved the table search handling (enraiged-laravel@af48296)
+
+---
+
 2025-11-08 : 0.3.19.3  
 Update: Allow for arguing additional/replacement column parameters
 
