@@ -76,7 +76,20 @@ trait EloquentBuilder
                             ? $this->filters[$index]['schema']
                             : (preg_match('/_at$/', $index) ? 'datetime' : 'date');
 
-                        if ($type === 'daterange') {
+                        if ($type === 'datepicker') {
+                            $date = $filters[$index];
+
+                            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+                                if ($column_type === 'datetime') {
+                                    $first = datetimezone_at($first);
+                                    $final = datetimezone_at($final);
+                                }
+
+                                $this->builder->whereDate($source, $date);
+                            }
+                        }
+
+                        else if ($type === 'daterange') {
                             [$first, $final] = $filters[$index];
 
                             if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $first) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $final)) {
@@ -89,7 +102,7 @@ trait EloquentBuilder
                             }
                         }
 
-                        if ($type === 'select') {
+                        else if ($type === 'select') {
                             $options = key_exists('options', $filter)
                                 ? $this->selectOptions($index, $filter['options'], false)
                                 : [];

@@ -1,5 +1,10 @@
 # Enraiged Tables Release Notes
 
+2026-01-15 : 0.3.19.6  
+Bugfix: Corrected datepicker,daterange table filter handling
+
+---
+
 2026-01-15 : 0.3.19.5  
 Bugfix: Corrected ability to autodownload in sync,redis queue connection
 
