@@ -1,5 +1,10 @@
 # Enraiged Tables Release Notes
 
+2026-01-15 : 0.3.19.5  
+Bugfix: Corrected ability to autodownload in sync,redis queue connection
+
+---
+
 2025-11-19 : 0.3.19.4  
 Update: Improved the table search handling (enraiged-laravel@af48296)
 

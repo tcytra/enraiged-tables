@@ -2,7 +2,6 @@
 
 namespace Enraiged\Tables\Builders\Traits;
 
-//Enraiged\Builders\UriBuilder;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 trait Exportable
@@ -91,10 +90,30 @@ trait Exportable
         $filename = key_exists('name', $this->exportable)
             ? $this->exportable['name']
             : $this->id;
-        $filetype = strtolower($this->request->get('export'));
+        $filetype = $this->exportableFiletype();
         $datetime = date('Y-m-d His');
 
         return "{$filename} {$datetime}.{$filetype}";
+    }
+
+    /**
+     *  Return the requested filetype.
+     *
+     *  @return string
+     */
+    public function exportableFiletype()
+    {
+        if ($this->exportable) {
+            $requested = $this->request->get('export');
+
+            $filetype = in_array($requested, $this->exportable['options'])
+                ? $requested
+                : $this->exportable['default'];
+
+            return strtolower($filetype);
+        }
+
+        return null;
     }
 
     /**
