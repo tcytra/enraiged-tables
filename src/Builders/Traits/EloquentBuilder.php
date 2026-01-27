@@ -30,10 +30,10 @@ trait EloquentBuilder
     /**
      *  Set or return the eloquent table builder.
      *
-     *  @param  \Illuminate\Database\Eloquent\Builder  $builder
+     *  @param  \Illuminate\Database\Eloquent\Builder|null  $builder = null
      *  @return \Illuminate\Database\Eloquent\Builder|self
      */
-    public function builder(Builder $builder = null)
+    public function builder(?Builder $builder = null)
     {
         if ($builder) {
             $this->builder = $builder;
@@ -139,10 +139,10 @@ trait EloquentBuilder
     /**
      *  Execute the pagination.
      *
-     *  @param  int     $rows = null
+     *  @param  int|null  $rows = null
      *  @return self
      */
-    public function paginate(int $rows = null)
+    public function paginate(?int $rows = null)
     {
         $this->paginator = $this->builder->paginate($rows ?? $this->request->get('rows'));
 

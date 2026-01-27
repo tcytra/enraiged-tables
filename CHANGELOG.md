@@ -1,5 +1,10 @@
 # Enraiged Tables Release Notes
 
+2026-01-27 : 0.3.19.7  
+Minor: Updated EloquentBuilder methods for php-8.4 standards
+
+---
+
 2026-01-15 : 0.3.19.6  
 Bugfix: Corrected datepicker,daterange table filter handling
 
