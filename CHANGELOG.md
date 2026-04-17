@@ -1,5 +1,10 @@
 # Enraiged Tables Release Notes
 
+2026-04-16 : 0.3.19.8  
+Minor: Updated composer to allow laravel/framework v12 or v13
+
+---
+
 2026-01-27 : 0.3.19.7  
 Minor: Updated EloquentBuilder methods for php-8.4 standards
 
